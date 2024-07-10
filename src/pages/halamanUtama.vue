@@ -27,7 +27,8 @@
       </div>
     </div>
   </section>
-  <section class="container mx-auto my-8">
+
+  <section class="container mx-auto my-52">
     <div></div>
     <div class="font-extrabold text-5xl flex justify-between">
       <p>Kategori Produk</p>
@@ -70,21 +71,68 @@
     </div>
   </section>
 
-  <section class="container mx-auto my-12">
+  <section class="container mx-auto my-52">
     <div class="font-extrabold text-5xl flex justify-center">
       <p>Produk Populer</p>
     </div>
-    <div class="flex flex-wrap gap-7 my-8 justify-center" >
+    <div class="flex flex-wrap gap-7 my-8 justify-center">
       <div class="" v-for="items in products">
         <Products :picture="items.picture" :title="items.title" :price="items.price" />
       </div>
     </div>
   </section>
+
+  <section class="bg-[#F1ECE6] flex justify-between items-center my-52">
+    <div
+      class="px-8 md:px-16 lg:px-48 w-full flex flex-col md:flex-row justify-between items-center"
+    >
+      <div class="md:w-1/2 mb-8 md:mb-0">
+        <h1 class="font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
+          Temukan Kue Lezat di Toko Kami
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed mb-6">
+          Kami tidak hanya menawarkan kue yang lezat, tetapi juga pelayanan terbaik. Tim kami siap
+          memberikan informasi yang Anda butuhkan tentang produk kami dan membantu Anda memilih kue
+          yang paling sesuai dengan keinginan Anda. Segera mampir ke toko kami dan rasakan
+          kenikmatan kue-kue kami. Kami dengan senang hati menantikan kunjungan Anda!
+        </p>
+        <button
+          class="bg-[#680A08] rounded-lg w-[190px] h-[55px] hover:bg-[#734746] transition-colors duration-300 text-white font-semibold text-lg"
+        >
+          Pesan Sekarang
+        </button>
+      </div>
+      <div class="md:w-1/2 flex justify-end pr-8">
+        <img
+          src="/public/img/KueEmas.png"
+          class="w-full h-auto object-cover rounded-lg shadow-lg max-w-xs md:max-w-sm lg:max-w-md"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="container mx-auto my-52">
+    <div class="font-extrabold text-5xl flex justify-center py-8">
+      <h1>Apa kata Mereka</h1>
+    </div>
+    <div class="flex gap-9 my-8 justify-center">
+    <div v-for="items in review">
+      <Review :picture="items.picture" :name="items.name" :star="items.star" :comment="items.comment"/>
+    </div>
+    </div>
+  </section>
+
+  <div>
+    <Footer />
+
+  </div>
 </template>
 
 <script setup>
 import Navbar from '../components/navBar.vue'
 import Products from '../components/listProduct.vue'
+import Review from '../components/TestimonialStar.vue'
+import Footer from '@/components/Footer.vue'
 import { ref } from 'vue'
 
 const products = ref([
@@ -127,7 +175,27 @@ const products = ref([
     picture: '/public/img/vanilamilshake.png',
     title: 'Vanila milshake',
     price: 'Rp.25.000'
-  },
+  }
+])
 
+const review = ref([
+  {
+    picture: '/public/img/avatar.png',
+    name: 'Mahluk Bumi',
+    star: 5,
+    comment: 'Donat dari Cakkeu benar-benar luar biasa! Lembut dan lezat'
+  },
+  {
+    picture: '/public/img/oyentampan.png',
+    name: 'Oyen Tampan',
+    star: 5,
+    comment: 'Cupcake yang indah dan rasanya sempurna, sangat direkomendasikan!'
+  },
+  {
+    picture: '/public/img/hams.png',
+    name: 'Hams',
+    star: 5,
+    comment: 'Macaron dengan rasa yang beragam dan nikmat, favorit saya!'
+  },
 ])
 </script>
